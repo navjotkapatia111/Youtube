@@ -4,19 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../utilities/store'
 import { youtube_search_api } from '../utilities/contants'
 import { cacheResult } from '../utilities/searchSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Head: React.FC = () => {
   const [searchquery, setsearch] = useState<string>('')
   const [suggestions, setsuggestions] = useState<string[]>([])
   const [showsuggestion, setshowsuggestion] = useState<boolean>(false)
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
   const handletogglemenu = () => {
     dispatch(togglemenu())
   }
   const searchcache = useSelector((store: RootState) => store.search)
+  
   useEffect(() => {
     const timer = setTimeout(() => {
-      // getsearch()
       if (searchcache[searchquery]) {
         setsuggestions(searchcache[searchquery])
       }
@@ -28,6 +30,7 @@ const Head: React.FC = () => {
       clearTimeout(timer)
     }
   }, [searchquery])
+
   const getsearch = async () => {
     try {
       const data = await fetch(youtube_search_api + searchquery)
@@ -39,11 +42,26 @@ const Head: React.FC = () => {
           [searchquery]: suggestions
         })
       )
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Error fetching suggestions:', error)
       setsuggestions([])
     }
   }
+
+  const handleSearch = () => {
+    if (searchquery.trim()) {
+      navigate(`/?q=${encodeURIComponent(searchquery)}`)
+      setshowsuggestion(false)
+    }
+  }
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setsearch(suggestion)
+    navigate(`/?q=${encodeURIComponent(suggestion)}`)
+    setshowsuggestion(false)
+  }
+
   return (
     <div className='flex justify-between items-center px-4 py-2 shadow-lg sticky top-0 bg-white z-50'>
       <div className='flex items-center'>
@@ -70,8 +88,16 @@ const Head: React.FC = () => {
             onFocus={() => setshowsuggestion(true)}
             onBlur={() => setshowsuggestion(false)}
             placeholder='Search'
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch()
+              }
+            }}
           />
-          <button className='px-6 py-2 bg-gray-100 border border-gray-300 rounded-r-full hover:bg-gray-200'>
+          <button 
+            onClick={handleSearch}
+            className='px-6 py-2 bg-gray-100 border border-gray-300 rounded-r-full hover:bg-gray-200'
+          >
             🔍
           </button>
         </div>
@@ -82,6 +108,7 @@ const Head: React.FC = () => {
                 <li 
                   key={s} 
                   className='py-2 px-4 hover:bg-gray-100 cursor-pointer flex items-center'
+                  onClick={() => handleSuggestionClick(s)}
                 >
                   🔍 {s}
                 </li>

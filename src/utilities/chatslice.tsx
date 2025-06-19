@@ -1,17 +1,23 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { Offset_live_chat } from "./contants";
+interface Message{
+    name:string
+    message:string
+}
 interface chatstate{
-    message:string[]
+    messages:Message[]
 }
 const initialState:chatstate={
-    message:[]
+    messages:[]
 }
-export const Chatslice=createSlice({
+const Chatslice=createSlice({
     name:'chat',
     initialState,
     reducers:{
-        addmessage:(state,action:PayloadAction<string>)=>{
-            state.message.push(action.payload)
+        addmessage:(state,action:PayloadAction<Message>)=>{
+            state.messages.splice(Offset_live_chat)
+            state.messages.push(action.payload)
         }
     }
 })

@@ -13,7 +13,7 @@ const Videocontainer: React.FC = () => {
       const data = await fetch(youtube_API)
       const json = await data.json()
       console.log(json.items)
-      setvideos(json.items)
+      setvideos(json.items|| [])
     }
     catch(e){
       console.log('Failed to fetch',e)
@@ -24,9 +24,9 @@ const Videocontainer: React.FC = () => {
   
   return (
     <div className='flex flex-wrap'>
-      {videos[0] && <Advideocard info={videos[0]}/>}
+      { videos?.[0] && <Advideocard info={videos[0]}/>}
       {
-      videos.map((video)=>(
+      Array.isArray(videos)&&videos.map((video)=>(
       <Link key={video.id} to={"/watch?v="+video.id}>
         <Videocard  info={video}/>
       </Link>
