@@ -62,26 +62,7 @@ export const Videos = () => {
   }
 
   return (
-    <>
-      <div className="p-4">
-        <input
-          className="border p-2 w-full rounded-l-full focus:outline-none focus:border-blue-500"
-          value={query}
-          onChange={(e) => setquery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search videos..."
-        />
-        <button 
-          onClick={() => {
-            navigate(`/?q=${encodeURIComponent(query)}`)
-            fetchvideos()
-          }}
-          className="px-6 py-2 bg-gray-100 border border-gray-300 rounded-r-full hover:bg-gray-200"
-        >
-          Search
-        </button>
-      </div>
-      
+    <>      
       {loading && (
         <div className="p-4 text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
