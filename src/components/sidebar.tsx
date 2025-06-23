@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import store, { type RootState } from '../utilities/store'
+import { useSelector } from 'react-redux'
+import  { type RootState } from '../utilities/store'
 import { Link } from 'react-router-dom'
 
 const Sidebar:React.FC = () => {
   const ismenuopen = useSelector((store:RootState) =>store.app.ismenuopen)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   if(!ismenuopen) return null
   return (
     <div className='p-5 shadow-lg w-48'>

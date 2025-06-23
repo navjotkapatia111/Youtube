@@ -50,12 +50,12 @@ export const Videos = () => {
     }
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      navigate(`/?q=${encodeURIComponent(query)}`)
-      fetchvideos()
-    }
-  }
+  // const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (e.key === 'Enter') {
+  //     navigate(`/?q=${encodeURIComponent(query)}`)
+  //     fetchvideos()
+  //   }
+  // }
 
   const handleVideoClick = (videoId: string) => {
     navigate(`/watch?v=${videoId}`)

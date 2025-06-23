@@ -9,7 +9,7 @@ interface Message{
   message:string
 }
 const Livechat:React.FC = () => {
-  const [livemessage,setlivemessage]=useState<string>()
+  const [livemessage,setlivemessage]=useState<string>('')
   const dispatch=useDispatch()
   const chatmessages = useSelector((store:RootState)=>store.chat.messages)
   useEffect(()=>{

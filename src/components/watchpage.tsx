@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import {togglemenu} from '../utilities/appslice'
 import {useSearchParams } from 'react-router-dom'

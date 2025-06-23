@@ -17,7 +17,8 @@ interface videoinfo{
   };
 }
 interface videocardprops {
-  info: videoinfo
+  info: any | videoinfo;
+
 }
 export const Videocard:React.FC <videocardprops> = ({info}) => {
   if (!info) return null;
