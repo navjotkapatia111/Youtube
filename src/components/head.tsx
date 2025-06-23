@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { togglemenu } from '../utilities/appslice'
 import { useDispatch, useSelector } from 'react-redux'
 import type { AppDispatch, RootState } from '../utilities/store'
-import { youtube_search_api } from '../utilities/contants'
+import { youtube_search_api } from '../utilities/constants'
 import { cacheResult } from '../utilities/searchSlice'
 import { useNavigate } from 'react-router-dom'
 

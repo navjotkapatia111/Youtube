@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { youtube_search_api } from '../utilities/contants'
+import { youtube_search_api } from '../utilities/constants'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 interface VideoItem {

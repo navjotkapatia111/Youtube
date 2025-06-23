@@ -1,6 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { Offset_live_chat } from "./contants";
+import { Offset_live_chat } from "./constants";
 interface Message{
     name:string
     message:string
