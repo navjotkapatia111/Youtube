@@ -23,12 +23,6 @@ const Sidebar:React.FC = () => {
       <li>Movies</li>
     </ul>
       <h1 className='font-bold pt-4'>Watch Later</h1>
-    <ul>
-      <li>Music</li>
-      <li>Sports</li>
-      <li>Gaming</li>
-      <li>Movies</li>
-    </ul>
     </div>
   )
   

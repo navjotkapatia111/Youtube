@@ -2,8 +2,6 @@ import  { useEffect } from 'react'
 import {useDispatch} from 'react-redux'
 import {togglemenu} from '../utilities/appslice'
 import {useSearchParams } from 'react-router-dom'
-import Comments from './comments'
-import Livechat from './livechat'
 
 const Watchpage = () => {
   const [searchParams] = useSearchParams()
@@ -22,11 +20,7 @@ const Watchpage = () => {
        frameBorder="0" 
        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
        </div>
-       <div className='w-full'>
-        <Livechat/>
        </div>
-       </div>
-       <Comments/>
        </div>
   )
 }
